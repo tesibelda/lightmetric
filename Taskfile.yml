@@ -1,0 +1,29 @@
+version: '3'
+
+env:
+  CGO_ENABLED: '0'
+
+tasks:
+  default:
+    cmds:
+      - task: test
+
+  mod:
+    desc: Init Go modules
+    cmds:
+      - go mod init
+
+  lint:
+    desc: Runs golint
+    cmds:
+      - golangci-lint run ./metric/...
+      - golangci-lint run ./shim/...
+      - golangci-lint run ./samples/counter/counter.go
+      - golangci-lint run ./samples/rand/rand.go
+    silent: true
+
+  test:
+    desc: Runs test suite
+    cmds:
+      - go test ./metric/...
+      - go test ./shim/...
