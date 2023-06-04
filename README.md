@@ -18,7 +18,7 @@ Hopefully as telegraf evolves this library will not be helpful in the future.
 
 ## Example of exec input plugin using lightmetric
 
-See the complete example at samples/rand folder:
+See the complete example at [samples/rand](https://github.com/tesibelda/lightmetric/tree/main/samples/rand) folder:
 
 ```go
 	ctags["sheep"] = mytag
@@ -30,7 +30,7 @@ See the complete example at samples/rand folder:
 
 ## Example of execd input plugin using Shim
 
-See the complete example at samples/counter folder:
+See the complete example at [samples/counter](https://github.com/tesibelda/lightmetric/tree/main/samples/counter) folder:
 
 ```go
 	p := NewCounter(mytag)
@@ -57,7 +57,7 @@ Use influx data format.
   data_format = "influx"
 ```
 
-[Reference](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/exec) 
+Reference: [exec input](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/exec) 
 
 ## For execd input plugin shim
 
@@ -69,7 +69,7 @@ Execd input shim requires telegraf to be configured with: signal = "STDIN"
   signal = "STDIN"
 ```
 
-[Reference](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/execd)
+Reference: [execd input](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/execd)
 
 
 # License
