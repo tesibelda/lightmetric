@@ -32,5 +32,5 @@ func main() {
 	t := metric.TimeWithPrecision(time.Now(), time.Millisecond)
 	m := metric.New("randplugin", ctags, cfields, t)
 
-	fmt.Fprintln(os.Stdout, m.String(metric.InfluxLp))
+	fmt.Fprint(os.Stdout, m.String(metric.InfluxLp))
 }
