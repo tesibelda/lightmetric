@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/tesibelda/lightmetric/raw/master/LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tesibelda/lightmetric)](https://goreportcard.com/report/github.com/tesibelda/lightmetric)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/tesibelda/lightmetric?display_name=release)
-![Go Reference](https://pkg.go.dev/github.com/tesibelda/lightmetric)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/tesibelda/lightmetric)](https://pkg.go.dev/github.com/tesibelda/lightmetric)
 
 # lightmetric
 
