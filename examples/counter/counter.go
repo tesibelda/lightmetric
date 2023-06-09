@@ -26,7 +26,7 @@ func main() {
 
 	p := NewCounter(mytag)
 	_ = p.Start()
-	execd := shim.New().WithPrecision(time.Second)
+	execd := shim.New("SheepCounter").WithPrecision(time.Second)
 	err := execd.RunInput(p.Gather)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error running lightmetric telegraf input shim: %s\n", err)

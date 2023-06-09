@@ -20,7 +20,7 @@ func (s *Shim) RunInput(g GatherFunc) error {
 	defer cancel()
 	s.watchForShutdown(cancel)
 
-	acc := metric.NewAccumulator(s.stderr, s.metricCh)
+	acc := metric.NewAccumulator(s.shimname, s.metricCh).WithErrorWriter(s.stderr)
 	acc.SetPrecision(s.precision)
 
 	s.gatherPromptCh = make(chan empty, 1)

@@ -35,7 +35,7 @@ See the complete example at [samples/counter](https://github.com/tesibelda/light
 ```go
 	p := NewCounter(mytag)
 	p.Start()
-	execd := shim.New().WithPrecision(time.Second)
+	execd := shim.New("SheepCounter").WithPrecision(time.Second)
 	err := execd.RunInput(p.Gather)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error running lightmetric telegraf input shim: %w\n", err)

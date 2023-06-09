@@ -32,7 +32,7 @@ func TestShimSetsUpLogger(t *testing.T) {
 	r := bufio.NewReader(stderrReader)
 	out, err := r.ReadString('\n')
 	require.NoError(t, err)
-	require.Contains(t, out, "Error in plugin: intentional")
+	require.Contains(t, out, "Error in plugin ShimTest: intentional")
 
 	err = stdinWriter.Close()
 	require.NoError(t, err)
@@ -47,7 +47,7 @@ func runErroringInputPlugin(
 	exited = make(chan bool, 1)
 	inp := &erroringInput{}
 
-	shim := New().WithPrecision(time.Millisecond)
+	shim := New("ShimTest").WithPrecision(time.Millisecond)
 	if stdin != nil {
 		shim.stdin = stdin
 	}

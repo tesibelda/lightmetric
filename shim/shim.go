@@ -19,6 +19,7 @@ import (
 type empty struct{}
 
 type Shim struct {
+	shimname  string
 	precision time.Duration
 	outFormat metric.BytesFormat
 
@@ -33,8 +34,9 @@ type Shim struct {
 }
 
 // New creates a new shim interface
-func New() *Shim {
+func New(shimname string) *Shim {
 	return &Shim{
+		shimname:  shimname,
 		precision: time.Nanosecond,
 		outFormat: metric.InfluxLp,
 		stdin:     os.Stdin,

@@ -13,22 +13,29 @@ import (
 )
 
 type Accumulator struct {
-	errfile   io.Writer
-	metrics   chan<- Metric
-	precision time.Duration
+	errfile    io.Writer
+	metrics    chan<- Metric
+	pluginname string
+	precision  time.Duration
 }
 
 // NewAccumulator returns a new Accumulator instance
 func NewAccumulator(
-	errfile io.Writer,
+	pluginname string,
 	metrics chan<- Metric,
 ) *Accumulator {
 	acc := Accumulator{
-		errfile:   errfile,
-		metrics:   metrics,
-		precision: time.Nanosecond,
+		errfile:    os.Stderr,
+		metrics:    metrics,
+		pluginname: pluginname,
+		precision:  time.Nanosecond,
 	}
 	return &acc
+}
+
+func (ac *Accumulator) WithErrorWriter(errfile io.Writer) *Accumulator {
+	ac.errfile = errfile
+	return ac
 }
 
 func (ac *Accumulator) AddFields(
@@ -51,9 +58,9 @@ func (ac *Accumulator) AddMetric(m Metric) {
 // The error will be tagged with the plugin name and written to the log.
 func (ac *Accumulator) AddError(err error) {
 	if err != nil {
-		_, werr := fmt.Fprintf(ac.errfile, "Error in plugin: %s\n", err)
+		_, werr := fmt.Fprintf(ac.errfile, "Error in plugin %s: %s\n", ac.pluginname, err)
 		if werr != nil {
-			fmt.Fprintln(os.Stderr, "Error in plugin: "+err.Error())
+			fmt.Fprintln(os.Stderr, "Error in plugin "+ac.pluginname+": "+err.Error())
 			fmt.Fprintln(os.Stderr, "Error logging previous error: "+werr.Error())
 		}
 	}

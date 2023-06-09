@@ -18,8 +18,8 @@ tasks:
     cmds:
       - golangci-lint run ./metric/...
       - golangci-lint run ./shim/...
-      - golangci-lint run ./samples/counter/counter.go
-      - golangci-lint run ./samples/rand/rand.go
+      - golangci-lint run ./examples/counter/counter.go
+      - golangci-lint run ./examples/rand/rand.go
     silent: true
 
   test:
