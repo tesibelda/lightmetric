@@ -5,7 +5,7 @@
 
 # lightmetric
 
-lightmetric contains libraries that help creating plugins for [telegraf](https://github.com/influxdata/telegraf) monitoring agent. metric library includes Metric and metric Accumlator; Shim helps creating execd input plugins like telegraf's [shim](https://github.com/influxdata/telegraf/tree/master/plugins/common/shim). Most of the code has been borrowed from telegraf's repository and most of it has not been modified, but it has been reorganized so that it provides:
+lightmetric contains libraries that help creating plugins for [telegraf](https://github.com/influxdata/telegraf) monitoring agent. metric library includes Metric and metric Accumulator that you may use for exec input plugins; Shim helps creating execd input plugins like telegraf's [shim](https://github.com/influxdata/telegraf/tree/master/plugins/common/shim). Most of the code has been borrowed from telegraf's repository and most of it has not been modified, but it has been reorganized so that it provides:
 * much less library dependencies
 * smaller final binary size
 * ability to set precision to the execd input plugin shim
@@ -16,9 +16,9 @@ Hopefully as telegraf evolves this library will not be helpful in the future.
 
 # Examples
 
-## Example of exec input plugin using lightmetric
+## Example of an exec input plugin using Metric
 
-See the complete example at [samples/rand](https://github.com/tesibelda/lightmetric/tree/main/samples/rand) folder:
+See the complete example at [examples/rand](https://github.com/tesibelda/lightmetric/tree/main/examples/rand) folder:
 
 ```go
 	ctags["sheep"] = mytag
@@ -28,9 +28,9 @@ See the complete example at [samples/rand](https://github.com/tesibelda/lightmet
 	fmt.Fprintln(os.Stdout, m.String(metric.InfluxLp))
 ```
 
-## Example of execd input plugin using Shim
+## Example of an execd input plugin using Shim
 
-See the complete example at [samples/counter](https://github.com/tesibelda/lightmetric/tree/main/samples/counter) folder:
+See the complete example at [examples/counter](https://github.com/tesibelda/lightmetric/tree/main/examples/counter) folder:
 
 ```go
 	p := NewCounter(mytag)
