@@ -25,7 +25,12 @@ See the complete example at [examples/rand](https://github.com/tesibelda/lightme
 	cfields["counter"] = rand.Intn(100)
 	t := metric.TimeWithPrecision(time.Now(), time.Millisecond)
 	m := metric.New("randplugin", ctags, cfields, t)
-	fmt.Fprintln(os.Stdout, m.String(metric.InfluxLp))
+	fmt.Fprint(os.Stdout, m.String(metric.InfluxLp))
+```
+
+### Example output
+```plain
+randplugin,sheep=Shaun counter=66i 1686482784943000000
 ```
 
 ## Example of an execd input plugin using Shim
@@ -44,6 +49,12 @@ See the complete example at [examples/counter](https://github.com/tesibelda/ligh
 	p.Stop()
 ```
 
+### Example output
+```plain
+counterplugin,sheep=Shaun counter=1i 1686483004000000000
+counterplugin,sheep=Shaun counter=2i 1686483014000000000
+counterplugin,sheep=Shaun counter=3i 1686483024000000000
+```
 
 # Telegraf configuration
 
@@ -58,7 +69,7 @@ Use influx data format.
 ```
 
 Reference: [exec input](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/exec) 
-
+ 
 ## For execd input plugin shim
 
 Execd input shim requires telegraf to be configured with: signal = "STDIN"
