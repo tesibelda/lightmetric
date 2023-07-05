@@ -69,7 +69,7 @@ func runErroringInputPlugin(
 type erroringInput struct {
 }
 
-func (i *erroringInput) Gather(ctx context.Context, acc metric.Accumulator) error {
+func (i *erroringInput) Gather(ctx context.Context, acc *metric.Accumulator) error {
 	acc.AddError(errors.New("intentional"))
 	return nil
 }
