@@ -13,7 +13,7 @@ import (
 	"github.com/tesibelda/lightmetric/metric"
 )
 
-type GatherFunc func(context.Context, metric.Accumulator) error
+type GatherFunc func(context.Context, *metric.Accumulator) error
 
 func (s *Shim) RunInput(g GatherFunc) error {
 	ctx, cancel := context.WithCancel(context.Background())
@@ -25,7 +25,7 @@ func (s *Shim) RunInput(g GatherFunc) error {
 
 	s.gatherPromptCh = make(chan empty, 1)
 	go func() {
-		s.startGathering(ctx, g, *acc)
+		s.startGathering(ctx, g, acc)
 		// closing the metric channel gracefully stops writing to stdout
 		close(s.metricCh)
 	}()
@@ -57,7 +57,7 @@ func (s *Shim) RunInput(g GatherFunc) error {
 func (s *Shim) startGathering(
 	ctx context.Context,
 	g GatherFunc,
-	acc metric.Accumulator,
+	acc *metric.Accumulator,
 ) {
 	var err error
 

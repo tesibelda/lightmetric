@@ -53,6 +53,8 @@ func (m *Metric) bytesInfluxLp() []byte {
 		ok  bool
 	)
 
+	// use lax encoding to avoid tags 'out of order' error
+	enc.SetLax(true)
 	enc.StartLine(m.name)
 	for k, v := range m.Tags() {
 		if len(k) > 0 && len(v) > 0 {

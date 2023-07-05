@@ -57,7 +57,7 @@ func (c *Counter) Stop() error {
 }
 
 // Gather get the metrics values and adds them to the given acummulator
-func (c *Counter) Gather(ctx context.Context, acc metric.Accumulator) error {
+func (c *Counter) Gather(ctx context.Context, acc *metric.Accumulator) error {
 	var ctags = make(map[string]string)
 	var cfields = make(map[string]interface{})
 
