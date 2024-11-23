@@ -25,8 +25,6 @@ func main() {
 		mytag = values[0]
 	}
 
-	rand.Seed(time.Now().UnixNano())
-
 	ctags["sheep"] = mytag
 	cfields["counter"] = rand.Intn(100) //nolint:gosec
 	t := metric.TimeWithPrecision(time.Now(), time.Millisecond)

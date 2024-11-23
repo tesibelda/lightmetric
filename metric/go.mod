@@ -1,10 +1,10 @@
 module github.com/tesibelda/lightmetric/metric
 
-go 1.19
+go 1.22
 
 require (
 	github.com/influxdata/line-protocol/v2 v2.2.1
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.10.0
 )
 
 require (

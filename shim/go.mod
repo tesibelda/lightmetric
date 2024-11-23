@@ -1,10 +1,10 @@
 module github.com/tesibelda/lightmetric/shim
 
-go 1.19
+go 1.22
 
 require (
-	github.com/stretchr/testify v1.8.4
-	github.com/tesibelda/lightmetric/metric v0.0.0-20230604193952-5816caa77516
+	github.com/stretchr/testify v1.10.0
+	github.com/tesibelda/lightmetric/metric v0.0.0-20241123173012-2217f1ca4afc
 )
 
 require (
