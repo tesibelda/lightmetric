@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-// TimeWithPrecision returns the given time rounded to the given precision
+// TimeWithPrecision returns the given time rounded to the given precision.
 func TimeWithPrecision(t time.Time, precision time.Duration) time.Time {
 	return t.Round(precision)
 }

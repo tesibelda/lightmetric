@@ -33,7 +33,7 @@ type Shim struct {
 	gatherPromptCh chan empty
 }
 
-// New creates a new shim interface
+// New creates a new shim interface.
 func New(shimname string) *Shim {
 	return &Shim{
 		shimname:  shimname,
@@ -46,13 +46,13 @@ func New(shimname string) *Shim {
 	}
 }
 
-// WithPrecision sets time precision to the shim's metric accumulator
+// WithPrecision sets time precision to the shim's metric accumulator.
 func (s *Shim) WithPrecision(precision time.Duration) *Shim {
 	s.precision = precision
 	return s
 }
 
-// WithOutputFormat sets the format for the serialization of the output metrics
+// WithOutputFormat sets the format for the serialization of the output metrics.
 func (s *Shim) WithOutputFormat(format metric.BytesFormat) *Shim {
 	s.outFormat = format
 	return s

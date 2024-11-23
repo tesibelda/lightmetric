@@ -19,7 +19,7 @@ type Accumulator struct {
 	precision  time.Duration
 }
 
-// NewAccumulator returns a new Accumulator instance
+// NewAccumulator returns a new Accumulator instance.
 func NewAccumulator(
 	pluginname string,
 	metrics chan<- Metric,

@@ -53,13 +53,14 @@ func New(
 	}
 
 	if len(fields) > 0 {
+		var vi interface{}
 		m.fields = make([]*Field, 0, len(fields))
 		for k, v := range fields {
-			v := convertField(v)
+			vi = convertField(v)
 			if v == nil {
 				continue
 			}
-			m.AddField(k, v)
+			m.AddField(k, vi)
 		}
 	}
 
@@ -266,7 +267,7 @@ func (m *Metric) HashID() uint64 {
 	return h.Sum64()
 }
 
-// Convert field to a supported type or nil if inconvertible
+// Convert field to a supported type or nil if inconvertible.
 func convertField(v interface{}) interface{} {
 	switch v := v.(type) {
 	case float64:

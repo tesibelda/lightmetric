@@ -3,7 +3,7 @@
 //
 // License: The MIT License (MIT)
 
-package metric
+package metric //nolint: testpackage
 
 import (
 	"testing"
@@ -32,7 +32,7 @@ func TestNewMetric(t *testing.T) {
 	require.Equal(t, now, m.Time())
 }
 
-// cpu value=1
+// cpu value=1.
 func baseMetric() Metric {
 	tags := map[string]string{}
 	fields := map[string]interface{}{

@@ -12,7 +12,7 @@ import (
 	"github.com/influxdata/line-protocol/v2/lineprotocol"
 )
 
-// BytesFormat represents supported decode formats
+// BytesFormat represents supported decode formats.
 type BytesFormat uint8
 
 const (
@@ -24,7 +24,7 @@ const (
 //
 //	(https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md)
 //
-// Currently it only supports influx line protocol
+// Currently it only supports influx line protocol.
 func (m *Metric) Bytes(format BytesFormat) []byte {
 	switch format {
 	case Go:
@@ -35,17 +35,17 @@ func (m *Metric) Bytes(format BytesFormat) []byte {
 	return nil
 }
 
-// String returns a string representation of the metric in the given format
+// String returns a string representation of the metric in the given format.
 func (m *Metric) String(format BytesFormat) string {
 	return string(m.Bytes(format))
 }
 
-// bytesGo returns a representation of the metric as commonly used with go
+// bytesGo returns a representation of the metric as commonly used with go.
 func (m *Metric) bytesGo() []byte {
 	return []byte(fmt.Sprintf("%s %v %v %d", m.name, m.Tags(), m.Fields(), m.tm.UnixNano()))
 }
 
-// bytesInfluxLp returns a representation of the metric in influx line protocol
+// bytesInfluxLp returns a representation of the metric in influx line protocol.
 func (m *Metric) bytesInfluxLp() []byte {
 	var (
 		enc lineprotocol.Encoder

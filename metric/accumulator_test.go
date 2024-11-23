@@ -3,11 +3,11 @@
 //
 // License: The MIT License (MIT)
 
-package metric
+package metric //nolint: testpackage
 
 import (
 	"bytes"
-	"fmt"
+	"errors"
 	"testing"
 	"time"
 
@@ -51,9 +51,9 @@ func TestAccAddError(t *testing.T) {
 	defer close(metrics)
 	a := NewAccumulator("TestPlugin", metrics).WithErrorWriter(errBuf)
 
-	a.AddError(fmt.Errorf("foo"))
-	a.AddError(fmt.Errorf("bar"))
-	a.AddError(fmt.Errorf("baz"))
+	a.AddError(errors.New("foo"))
+	a.AddError(errors.New("bar"))
+	a.AddError(errors.New("baz"))
 
 	errs := bytes.Split(errBuf.Bytes(), []byte{'\n'})
 	require.Len(t, errs, 4) // 4 because of trailing newline

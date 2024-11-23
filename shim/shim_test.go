@@ -2,7 +2,7 @@
 //
 // License: The MIT License (MIT)
 
-package shim
+package shim //nolint: testpackage
 
 import (
 	"bufio"
@@ -42,9 +42,9 @@ func runErroringInputPlugin(
 	t *testing.T,
 	stdin io.Reader,
 	stdout, stderr io.Writer,
-) (metricProcessed chan bool, exited chan bool) {
-	metricProcessed = make(chan bool, 1)
-	exited = make(chan bool, 1)
+) (chan bool, chan bool) {
+	metricProcessed := make(chan bool, 1)
+	exited := make(chan bool, 1)
 	inp := &erroringInput{}
 
 	shim := New("ShimTest").WithPrecision(time.Millisecond)
@@ -69,7 +69,7 @@ func runErroringInputPlugin(
 type erroringInput struct {
 }
 
-func (i *erroringInput) Gather(ctx context.Context, acc *metric.Accumulator) error {
+func (i *erroringInput) Gather(_ context.Context, acc *metric.Accumulator) error {
 	acc.AddError(errors.New("intentional"))
 	return nil
 }

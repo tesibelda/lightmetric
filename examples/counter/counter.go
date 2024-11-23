@@ -46,18 +46,18 @@ func NewCounter(name string) *Counter {
 	}
 }
 
-// Start starts whatever logic needed before for gathering metrics
+// Start starts whatever logic needed before for gathering metrics.
 func (c *Counter) Start() error {
 	return nil
 }
 
-// Stop stops whatever logic needed before plugin exit
+// Stop stops whatever logic needed before plugin exit.
 func (c *Counter) Stop() error {
 	return nil
 }
 
-// Gather get the metrics values and adds them to the given acummulator
-func (c *Counter) Gather(ctx context.Context, acc *metric.Accumulator) error {
+// Gather get the metrics values and adds them to the given acummulator.
+func (c *Counter) Gather(_ context.Context, acc *metric.Accumulator) error {
 	var ctags = make(map[string]string)
 	var cfields = make(map[string]interface{})
 
